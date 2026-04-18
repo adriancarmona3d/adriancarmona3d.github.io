@@ -580,3 +580,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item) return;
     item.addEventListener('mouseenter', () => { v.muted = true; v.play().catch(() => {}); });
     item.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+  });
+});
