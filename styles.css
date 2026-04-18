@@ -1472,127 +1472,12 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HORIZONTAL SCROLL — Skills / Work3D / Timeline
+   HORIZONTAL SCROLL — móvil únicamente (ver @media 600px abajo)
+   En desktop los wrappers son contenedores transparentes.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Scroll hint label ────────────────────────────────────────── */
-.h-scroll-hint {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(244,232,206,0.3);
-  margin-bottom: 1rem;
-  user-select: none;
-}
-#skills .h-scroll-hint { color: rgba(10,11,14,0.35); }
-
-/* ── Skills horizontal scroll ────────────────────────────────── */
-.skills-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 1.5rem;
-  padding: 0.5rem 0 1.5rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--orange) rgba(244,232,206,0.08);
-}
-.skills-scroll::-webkit-scrollbar { height: 4px; }
-.skills-scroll::-webkit-scrollbar-track { background: rgba(244,232,206,0.05); border-radius: 2px; }
-.skills-scroll::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
-
-.skills-scroll .skills-group {
-  flex-shrink: 0;
-  width: clamp(280px, 42vw, 420px);
-  margin-bottom: 0;
-  scroll-snap-align: start;
-  background: rgba(244,232,206,0.03);
-  border-radius: 4px;
-  padding: 1.5rem 1.5rem 1.5rem;
-  border: 1px solid rgba(244,232,206,0.07);
-}
-
-/* ── Work3D horizontal scroll ────────────────────────────────── */
-.art-scroll {
-  overflow-x: auto;
-  padding-bottom: 1.5rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--orange) rgba(255,255,255,0.04);
-}
-.art-scroll::-webkit-scrollbar { height: 4px; }
-.art-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 2px; }
-.art-scroll::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
-
-.art-scroll .art-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  height: clamp(280px, 32vw, 420px);
-  gap: 4px;
-  margin-top: 0;
-}
-.art-scroll .art-item {
-  flex-shrink: 0;
-  width: clamp(220px, 26vw, 360px);
-  height: 100%;
-  scroll-snap-align: start;
-}
-.art-scroll .art-item--wide {
-  width: clamp(340px, 40vw, 540px);
-}
-.art-scroll .art-item--full {
-  width: clamp(480px, 60vw, 820px);
-}
-
-/* ── Timeline horizontal scroll ──────────────────────────────── */
-.tl-scroll {
-  overflow-x: auto;
-  padding-bottom: 1.5rem;
-  margin-top: 1rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--cream) rgba(244,232,206,0.08);
-}
-.tl-scroll::-webkit-scrollbar { height: 4px; }
-.tl-scroll::-webkit-scrollbar-track { background: rgba(244,232,206,0.05); border-radius: 2px; }
-.tl-scroll::-webkit-scrollbar-thumb { background: rgba(244,232,206,0.5); border-radius: 2px; }
-
-.tl-scroll .timeline-track {
-  display: flex;
-  flex-direction: row;
-  width: max-content;
-  padding-left: 0;
-  margin-top: 0;
-  /* Replace vertical spine with horizontal top line */
-  padding-top: 2rem;
-}
-/* Horizontal spine line */
-.tl-scroll .timeline-track::before {
-  top: 18px;
-  left: 0;
-  right: 0;
-  bottom: auto;
-  width: 100%;
-  height: 1px;
-}
-.tl-scroll .tl-item {
-  flex-shrink: 0;
-  width: clamp(240px, 32vw, 340px);
-  padding: 0 2rem 0 0;
-  border-left: none;
-  scroll-snap-align: start;
-}
-.tl-scroll .tl-dot {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  margin-bottom: 1.2rem;
-}
+/* hint oculto en desktop */
+.h-scroll-hint { display: none; }
 
 /* ── CV frame ─────────────────────────────────────────────────── */
 .cv-frame {
@@ -1860,10 +1745,41 @@ footer {
     flex-shrink: 0;
   }
 
-  /* ── Skills ───────────────────────────────────────────────── */
+  /* ── Scroll hint ──────────────────────────────────────────── */
+  .h-scroll-hint {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,232,206,0.3);
+    margin-bottom: 0.75rem;
+    user-select: none;
+  }
+  #skills .h-scroll-hint { color: rgba(10,11,14,0.35); }
+
+  /* ── Skills — horizontal scroll ───────────────────────────── */
   #skills .section-inner { padding: 0 0.5rem; }
-  .skills-scroll .skills-group { width: clamp(240px, 78vw, 300px); padding: 1rem; }
-  .skills-group { margin-bottom: 2rem; }
+  .skills-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.25rem 0 1.25rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .skills-scroll::-webkit-scrollbar { display: none; }
+  .skills-scroll .skills-group {
+    flex-shrink: 0;
+    width: clamp(240px, 80vw, 300px);
+    margin-bottom: 0;
+    scroll-snap-align: start;
+    background: rgba(244,232,206,0.03);
+    border-radius: 4px;
+    padding: 1rem;
+    border: 1px solid rgba(244,232,206,0.07);
+  }
   .skills-group-title {
     font-size: 0.52rem;
     padding: 0.5rem 0.75rem;
@@ -1874,8 +1790,6 @@ footer {
   .skill-logo { width: 34px; height: 34px; }
   .skill-icon-text { font-size: 1.4rem; }
   .skill-name { font-size: 0.52rem; }
-
-  /* Desactivar hover/tilt en touch */
   .skill-card:hover {
     background: rgba(255,246,226,0.92);
     border-color: rgba(10,11,14,0.12);
@@ -1890,13 +1804,31 @@ footer {
   .demo-iframe-wrap { aspect-ratio: 16/9; }
   .demo-label { font-size: 0.52rem; }
 
-  /* ── 3D Work ──────────────────────────────────────────────── */
-  .art-scroll .art-grid { height: clamp(200px, 55vw, 280px); }
-  .art-scroll .art-item { width: clamp(160px, 62vw, 240px); }
+  /* ── 3D Work — horizontal scroll ─────────────────────────── */
+  .art-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .art-scroll::-webkit-scrollbar { display: none; }
+  .art-scroll .art-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    height: clamp(200px, 55vw, 280px);
+    gap: 6px;
+    margin-top: 0;
+    scroll-snap-type: x mandatory;
+  }
+  .art-scroll .art-item {
+    flex-shrink: 0;
+    width: clamp(160px, 62vw, 240px);
+    height: 100%;
+    scroll-snap-align: start;
+  }
   .art-scroll .art-item--wide { width: clamp(240px, 80vw, 340px); }
   .art-scroll .art-item--full { width: clamp(300px, 90vw, 420px); }
-
-  /* Overlay siempre visible en mobile (sin hover) */
+  /* Overlay siempre visible en mobile */
   .art-item .art-overlay {
     transform: translateY(0);
     background: linear-gradient(to top, rgba(9,9,13,0.85) 0%, transparent 100%);
@@ -1904,7 +1836,6 @@ footer {
   .art-item .art-expand { opacity: 1; }
   .art-title { font-size: 0.6rem; }
   .art-tools { font-size: 0.5rem; }
-
   .work3d-cta { padding: 0; }
   .work3d-cta .btn { width: 100%; max-width: 300px; }
 
@@ -1924,20 +1855,39 @@ footer {
   .video-wrap { cursor: auto; }
   #vfx .video-wrap { margin-bottom: 1rem; }
 
-  /* ── Timeline ─────────────────────────────────────────────── */
-  .tl-scroll .tl-item { width: clamp(200px, 76vw, 280px); }
-  .tl-item {
-    grid-template-columns: 1fr;
-    gap: 0.5rem 0;
-    padding-bottom: 2rem;
+  /* ── Timeline — horizontal scroll ────────────────────────── */
+  .tl-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-top: 1rem;
   }
-  .tl-year {
-    font-size: 1.4rem;
-    text-align: left;
-    color: var(--orange);
+  .tl-scroll::-webkit-scrollbar { display: none; }
+  .tl-scroll .timeline-track {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding-left: 0;
+    margin-top: 0;
+    padding-top: 2rem;
+    scroll-snap-type: x mandatory;
   }
-  .tl-spine { display: none; }
-  .tl-body { padding-left: 0; border-left: 2px solid rgba(224,80,16,0.3); padding-left: 1rem; }
+  .tl-scroll .timeline-track::before {
+    top: 18px; left: 0; right: 0; bottom: auto;
+    width: 100%; height: 1px;
+  }
+  .tl-scroll .tl-item {
+    flex-shrink: 0;
+    width: clamp(220px, 78vw, 290px);
+    padding: 0 1.5rem 0 0;
+    scroll-snap-align: start;
+  }
+  .tl-scroll .tl-dot {
+    position: relative;
+    left: auto; top: auto;
+    transform: none;
+    margin-bottom: 1rem;
+  }
   .tl-head { font-size: 0.75rem; }
   .tl-desc { font-size: 0.68rem; line-height: 1.7; }
 
