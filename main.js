@@ -571,12 +571,14 @@ document.addEventListener('mousemove', e => {
 }, { passive: true });
 
 
-/* ── 21. DRAG-TO-SCROLL (desktop mouse) ──────────────────────── */
+/* ── 21. DRAG-TO-SCROLL + WHEEL-TO-SCROLL (desktop) ─────────── */
 (function initDragScroll() {
   const selectors = ['.skills-scroll', '.art-scroll', '.tl-scroll'];
   selectors.forEach(sel => {
     const el = document.querySelector(sel);
     if (!el) return;
+
+    /* ── drag ── */
     let isDown = false, startX = 0, scrollLeft = 0;
     el.addEventListener('mousedown', e => {
       isDown = true;
@@ -594,6 +596,16 @@ document.addEventListener('mousemove', e => {
       el.scrollLeft = scrollLeft - walk;
     });
     el.style.cursor = 'grab';
+
+    /* ── wheel → horizontal ── */
+    el.addEventListener('wheel', e => {
+      // Only hijack when the scroll container itself still has room to scroll
+      const atStart = el.scrollLeft <= 0;
+      const atEnd   = el.scrollLeft >= el.scrollWidth - el.clientWidth - 1;
+      if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return; // let page scroll
+      e.preventDefault();
+      el.scrollLeft += e.deltaY * 1.2;
+    }, { passive: false });
   });
 })();
 
