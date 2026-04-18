@@ -511,6 +511,28 @@
         </div>
       </div>
 
+      <!-- [ Bust — Blender ] -->
+      <div class="art-item" onclick="openLightbox('images/busto.jpg')">
+        <button class="art-expand" onclick="openLightbox('images/busto.jpg');event.stopPropagation()">⤢</button>
+        <img src="images/busto.jpg" alt="Character Bust Study">
+        <div class="art-overlay">
+          <p class="art-cat art-cat--char" data-en="CHARACTER · STUDY" data-es="PERSONAJE · ESTUDIO">CHARACTER · STUDY</p>
+          <p class="art-title" data-en="Bust Study" data-es="Estudio de Busto">Bust Study</p>
+          <p class="art-tools">Blender · Cycles</p>
+        </div>
+      </div>
+
+      <!-- [ 3ds Max / SketchUp Render — WIDE ] -->
+      <div class="art-item art-item--wide" onclick="openLightbox('images/render3dsmaxPhotoshopSketchup.png')">
+        <button class="art-expand" onclick="openLightbox('images/render3dsmaxPhotoshopSketchup.png');event.stopPropagation()">⤢</button>
+        <img src="images/render3dsmaxPhotoshopSketchup.png" alt="3ds Max · SketchUp · Photoshop Render">
+        <div class="art-overlay">
+          <p class="art-cat art-cat--env" data-en="ENVIRONMENT · VISUALIZATION" data-es="ENTORNO · VISUALIZACIÓN">ENVIRONMENT · VISUALIZATION</p>
+          <p class="art-title" data-en="Architectural Render" data-es="Render Arquitectónico">Architectural Render</p>
+          <p class="art-tools">3ds Max · SketchUp · Photoshop</p>
+        </div>
+      </div>
+
       <!-- [ Wine Bottle Animation — hover previews · click opens full video ] -->
       <div class="art-item art-item--video-hover" onclick="openVideoLightbox('images/renderbotellavino3D.mp4')">
         <button class="art-expand" onclick="openVideoLightbox('images/renderbotellavino3D.mp4');event.stopPropagation()">▶</button>
@@ -660,6 +682,9 @@
           </div>
 
           <div class="proj-gallery" style="margin-bottom:1.5rem;">
+            <div class="proj-img-wrap" onclick="openLightbox('images/ghoulgeyser.png')" style="grid-column:span 2;">
+              <img src="images/ghoulgeyser.png" alt="Ghoul Geyser — cover">
+            </div>
             <div class="proj-img-wrap" onclick="openLightbox('images/ghoul1.png')">
               <img src="images/ghoul1.png" alt="Ghoul Geyser 1">
             </div>
@@ -711,6 +736,23 @@
             <span class="meta-v" data-en="Team of three" data-es="Equipo de tres personas">Team of three</span>
             <span class="meta-k" data-en="Software" data-es="Software">Software</span>
             <span class="meta-v">Unity 2D · Photoshop · C#</span>
+          </div>
+          <div class="proj-gallery" style="margin-bottom:1.5rem;">
+            <div class="proj-img-wrap" onclick="openLightbox('images/neuroscape1.png')" style="grid-column:span 2;">
+              <img src="images/neuroscape1.png" alt="NeuroScape – Resurgence">
+            </div>
+            <div class="proj-img-wrap" onclick="openLightbox('images/neuroscape2.png')">
+              <img src="images/neuroscape2.png" alt="NeuroScape 2">
+            </div>
+            <div class="proj-img-wrap" onclick="openLightbox('images/neuroscape3.png')">
+              <img src="images/neuroscape3.png" alt="NeuroScape 3">
+            </div>
+            <div class="proj-img-wrap" onclick="openLightbox('images/neuroscape4.png')">
+              <img src="images/neuroscape4.png" alt="NeuroScape 4">
+            </div>
+            <div class="proj-img-wrap" onclick="openLightbox('images/neuroscape5.png')">
+              <img src="images/neuroscape5.png" alt="NeuroScape 5">
+            </div>
           </div>
           <div class="proj-actions">
             <a href="https://carmonaa-al.itch.io/neuroscape-resurgence" target="_blank" class="btn btn-primary"
@@ -840,6 +882,16 @@
                 <div class="vid-thumb">
                   <div class="play-ring"></div>
                   <span class="vid-label" data-en="VFX Comp 03" data-es="Comp VFX 03">VFX Comp 03</span>
+                </div>
+              </div>
+            </div>
+            <div style="grid-column:span 2;">
+              <p class="demo-label" data-en="Composition 04 — Nuke" data-es="Composición 04 — Nuke">Composition 04 — Nuke</p>
+              <div class="video-wrap" onclick="playVideo(this)">
+                <video preload="metadata"><source src="images/compo4nuke.mp4" type="video/mp4"></video>
+                <div class="vid-thumb">
+                  <div class="play-ring"></div>
+                  <span class="vid-label" data-en="VFX Comp 04 · Nuke" data-es="Comp VFX 04 · Nuke">VFX Comp 04 · Nuke</span>
                 </div>
               </div>
             </div>
