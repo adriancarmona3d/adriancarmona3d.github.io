@@ -571,7 +571,33 @@ document.addEventListener('mousemove', e => {
 }, { passive: true });
 
 
-/* ── 21. INIT ──────────────────────────────────────────────────── */
+/* ── 21. DRAG-TO-SCROLL (desktop mouse) ──────────────────────── */
+(function initDragScroll() {
+  const selectors = ['.skills-scroll', '.art-scroll', '.tl-scroll'];
+  selectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    let isDown = false, startX = 0, scrollLeft = 0;
+    el.addEventListener('mousedown', e => {
+      isDown = true;
+      el.style.cursor = 'grabbing';
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+    });
+    el.addEventListener('mouseleave', () => { isDown = false; el.style.cursor = 'grab'; });
+    el.addEventListener('mouseup',    () => { isDown = false; el.style.cursor = 'grab'; });
+    el.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x    = e.pageX - el.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      el.scrollLeft = scrollLeft - walk;
+    });
+    el.style.cursor = 'grab';
+  });
+})();
+
+/* ── 22. INIT ──────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang);
 
