@@ -6,6 +6,10 @@
    ================================================================ */
 'use strict';
 
+/* ── 0. TOUCH DETECTION ───────────────────────────────────────── */
+const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+if (isTouch) document.body.classList.add('is-touch');
+
 /* ── 1. CUSTOM CURSOR ─────────────────────────────────────────── */
 const dot  = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
@@ -82,15 +86,15 @@ function toggleMenu() {
 /* ── 5. SECTION COLOUR INDICATOR ─────────────────────────────── */
 const sectionColours = {
   'hero':     '#E05010',
-  'about':    '#07B5D4',
-  'skills':   '#E05010',
+  'about':    '#36C26A',
+  'skills':   '#FFBA00',
   'demos':    '#FFBA00',
   'work3d':   '#FF4500',
-  'gamedev':  '#06AECA',
+  'gamedev':  '#36C26A',
   'vfx':      '#FFE500',
-  'timeline': '#F4E8CE',
+  'timeline': '#FFBA00',
   'cv':       '#36C26A',
-  'contact':  '#E05010',
+  'contact':  '#36C26A',
 };
 
 const secIndicator = document.getElementById('secIndicator');
@@ -120,7 +124,7 @@ document.addEventListener('mousemove', e => {
 
 const parallaxEls = document.querySelectorAll('[data-parallax]');
 
-if (parallaxEls.length) {
+if (parallaxEls.length && !isTouch) {
   (function animateParallax() {
     parallaxX += (targetPX - parallaxX) * 0.06;
     parallaxY += (targetPY - parallaxY) * 0.06;
@@ -241,11 +245,13 @@ function addTilt(selector, intensity = 12) {
   });
 }
 
-// Apply tilt after DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  addTilt('.skill-card', 10);
-  addTilt('.art-item:not(.art-item--full)', 8);
-});
+// Apply tilt only on non-touch devices
+if (!isTouch) {
+  document.addEventListener('DOMContentLoaded', () => {
+    addTilt('.skill-card', 10);
+    addTilt('.art-item:not(.art-item--full)', 8);
+  });
+}
 
 
 /* ── 11. TYPEWRITER ROLES ──────────────────────────────────────── */
@@ -572,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainImg = document.getElementById('galleryMain');
   if (mainImg) mainImg.style.transition = 'opacity 0.35s ease';
 
-  initMagneticButtons();
+  if (!isTouch) initMagneticButtons();
 
   // Art-item videos: muted hover preview, click opens video lightbox
   document.querySelectorAll('.art-item .art-video-fill video').forEach(v => {
